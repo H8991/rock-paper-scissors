@@ -1,5 +1,14 @@
+//#region VARIABLES Keep track of the players score etc
+let playerScore = 0;
+let playerWins = 0;
+// keep track of the computers score
+let computerScore = 0;
+let computerWins = 0;
+// keep track of amount of games
+let numOfGames = 0;
+//#endregion
+
 // Write function that returns rock/paper/scissors for computer
-// Use Math.Random()
 function getComputerChoice() {
     let randomNumber = Math.random();
     let computerChoice;
@@ -15,28 +24,23 @@ function getComputerChoice() {
     }
     return computerChoice;
 }
+
+
 /*Write function that returns rock/paper/scissors for Player
 Use prompt to get user input */
-
 function getUserChoice() {
     let userChoice = prompt("Please choose Rock, paper, or scissors.");
     alert(`You chose: ${userChoice}`);
-    return userChoice;
+    return userChoice.toLowerCase();
 }
-// Keep track of the players score
-let playerScore = 0;
-let playerWins = 0;
-// keep track of the computers score
-let computerScore = 0;
-let computerWins = 0;
-// keep track of amount of games
-let numOfGames = 0;
 
-// write play round function that compares choice to see who wins
 
-function playRound() {
-    playerChoice = getUserChoice();
-    oppenentChoice = getComputerChoice();
+
+// Write: play round function that compares choice to see who wins
+
+function playRound(humanChoice, computerChoice) {
+    let playerChoice = humanChoice;
+    let oppenentChoice = computerChoice;
 
         if ((playerChoice == "paper" && oppenentChoice === "rock")
          || (playerChoice == "scissors" && oppenentChoice === "paper")
@@ -97,11 +101,15 @@ function displayResults() {
 }
 // write play game - consists of 5 rounds - then displays overall winner
 function playGame() {
+
     //Display rules
     displayRules();
+    
     //Play 5 rounds
     for (let i = 0; i < 5; i++) {
-        playRound();
+        let humanChoice = getUserChoice();
+        let computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
     }
     //Display Results
     displayResults();
