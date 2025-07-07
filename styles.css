@@ -57,11 +57,16 @@ button {
 /* RPS Button */
 .rpsBtn {
     height: 50px;
-    width: 100px;
+    width: 120px;
     border-radius: 50px;
     border-color: rgb(14, 227, 14);
     color: rgb(14, 227, 14);
     background-color: black;
+    border: 2px solid rgb(14, 227, 14);
+}
+.rpsBtn:hover {
+    background-color: white;
+    
 }
 
 /* message */
@@ -70,4 +75,13 @@ button {
     white-space: pre-line;
     line-height: 2;
     font-weight:bold;
+}
+.win {
+    color: green;
+}
+.lose {
+    color: red;
+}
+.draw {
+    color: white;
 }
