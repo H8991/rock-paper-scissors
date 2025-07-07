@@ -1,76 +1,18 @@
-//#region VARIABLES Keep track of the players score etc
-let playerScore = 0;
-let playerWins = 0;
-// keep track of the computers score
-let computerScore = 0;
-let computerWins = 0;
-// keep track of amount of games
-let numOfGames = 0;
-//#endregion
-
-// Write function that returns rock/paper/scissors for computer
+// #region ---------------Functions-------------------------
 function getComputerChoice() {
-    let randomNumber = Math.random();
-    let computerChoice;
+        let randomNumber = Math.random();
+        let computerChoice;
 
-    if (randomNumber >= 0 && randomNumber < 0.3) {
-        computerChoice = "rock";
-    }
-    else if (randomNumber >= 0.3 && randomNumber < 0.66) {
-        computerChoice = "paper";
-    }
-    else {
-        computerChoice = "scissors";
-    }
-    return computerChoice;
-}
-
-
-/*Write function that returns rock/paper/scissors for Player
-Use prompt to get user input */
-function getUserChoice() {
-    let userChoice = prompt("Please choose Rock, paper, or scissors.");
-    alert(`You chose: ${userChoice}`);
-    return userChoice.toLowerCase();
-}
-
-
-
-// Write: play round function that compares choice to see who wins
-
-function playRound(humanChoice, computerChoice) {
-    let playerChoice = humanChoice;
-    let oppenentChoice = computerChoice;
-
-        if ((playerChoice == "paper" && oppenentChoice === "rock")
-         || (playerChoice == "scissors" && oppenentChoice === "paper")
-         || (playerChoice == "rock" && oppenentChoice === "scissors"))
-         {
-            // Display the result (win/lose) 
-            // increment scores accordingly
-            playerScore++;
-            numOfGames++;
-            playerWins++;
-            alert(`The computer chose: ${oppenentChoice}. \nCongratulations, you won! Your score is ${playerScore}.`);
-         }
-        else if (playerChoice === oppenentChoice)
-        {
-            computerScore++;
-            playerScore++;
-            numOfGames++;
-            alert(`The computer chose: ${oppenentChoice}. It's a draw- you both get a point!`);
+        if (randomNumber >= 0 && randomNumber < 0.3) {
+            computerChoice = "rock";
         }
-        else
-         {
-            computerScore++;
-            numOfGames++;
-            computerWins++;
-            alert(`The computer chose: ${oppenentChoice}. \nSorry, you lost this round. Your score is ${playerScore}`)
-         }
-}
-
-function displayRules() {
-    alert(`Welcome to Rock, Paper, Scissors.\nThere will be 5 rounds.\nWinner will be displayed at the end. Good Luck.`);
+        else if (randomNumber >= 0.3 && randomNumber < 0.66) {
+            computerChoice = "paper";
+        }
+        else {
+            computerChoice = "scissors";
+        }
+        return computerChoice;
 }
 
 function displayResults() {
@@ -99,23 +41,73 @@ function displayResults() {
     }
 
 }
-// write play game - consists of 5 rounds - then displays overall winner
-function playGame() {
 
-    //Display rules
-    displayRules();
-    
-    //Play 5 rounds
-    for (let i = 0; i < 5; i++) {
-        let humanChoice = getUserChoice();
-        let computerChoice = getComputerChoice();
-        playRound(humanChoice, computerChoice);
+function playRound(playerChoice) {
+    let computerChoice = getComputerChoice();
+
+    if ((playerChoice == "paper" && computerChoice === "rock")
+        || (playerChoice == "scissors" && computerChoice === "paper")
+        || (playerChoice == "rock" && computerChoice === "scissors"))
+        {
+        playerScore++;
+        message.textContent = `You chose: ${playerChoice}.\nThe computer chose: ${computerChoice}.\nCongratulations, you won!`;
+        }
+    else if (playerChoice === computerChoice)
+    {
+        message.textContent =`You chose: ${playerChoice}.\nThe computer chose: ${computerChoice}. \nBoring...`;
     }
-    //Display Results
-    displayResults();
-
+    else
+        {
+        computerScore++
+        message.textContent = `You chose: ${playerChoice}.\nThe computer chose: ${computerChoice}. \nSorry, you lost this round.`;
+        }
+        pScore.textContent = playerScore;
+        cScore.textContent = computerScore;
 }
 
-playGame();
+// #endregion
+
+//#region --------------- References to HTML elements --------------------
+//Buttons
+const rockBtn = document.querySelector(".rockBtn");
+const paperBtn = document.querySelector(".paperBtn");
+const scissorsBtn = document.querySelector(".scissorsBtn");
+
+// message text
+const message = document.querySelector("#message");
+
+// On-screen Scores
+const cScore = document.querySelector("#cScore");
+const pScore = document.querySelector("#pScore");
+//#endregion
+
+
+// #region ----------------Program-------------------------- 
+
+//#region ---------------- Variables ------------------------
+let playerScore = 0;
+let computerScore = 0;
+let numOfGames = 0;
+//#endregion
+
+// Event Listeners
+rockBtn.addEventListener("click", () => {
+    playRound("rock");
+})
+paperBtn.addEventListener("click", () => {
+    playRound("paper");
+})
+scissorsBtn.addEventListener("click", () => {
+    playRound("scissors");
+})
+
+
+
+
+
+
+// #endregion
+
+
 
 

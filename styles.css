@@ -1,0 +1,68 @@
+html {
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(255, 255, 255);
+}
+
+/* game console, screen and button panel */
+#game-container {
+    background-color: white;
+    border: 5px solid rgb(0, 0, 0);
+    margin: 50px auto;
+    height: 500px;
+    width: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+#screen-container {
+    height: 80%;
+    background-color: rgb(249, 250, 251);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+#score-container {
+    background-color: rgb(5, 231, 252);
+    border-top: 3px solid black;
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+}
+#btn-container {
+    background-color: darkblue;
+    border-top: 4px solid black;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* --------------- ALL Buttons ---------------*/
+
+/* Global */
+button {
+    font-weight: bold;
+    border: 2px solid black;
+}
+/* States */
+.hide {
+    display: none;
+}
+/* ----------------------------------------- */
+/* RPS Button */
+.rpsBtn {
+    height: 50px;
+    width: 100px;
+}
+
+/* message */
+#message {
+    font-size: 1.6em;
+    white-space: pre-line;
+    line-height: 2;
+    font-weight:bold;
+}
